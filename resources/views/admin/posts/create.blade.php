@@ -5,7 +5,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">Create a new post</div>
             <div class="panel-body">
-                <form action="b{{ route('poste.store')}}" method="post">
+                <form action="{{ route('post.store')}}" method="post">
                     {{ csrf_field() }}
 
                     <div class="form-group">

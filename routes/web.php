@@ -30,9 +30,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         'uses' => 'PostsController@create',
         'as'   => 'post.create'
     ]);
-});
 
-Route::post('/post/store', [
-    'uses' => 'PostsController@store',
-    'as'   => 'post.store'
-]);
+    Route::post('/post/store', [
+        'uses' => 'PostsController@store',
+        'as'   => 'post.store'
+    ]);
+    
+});
