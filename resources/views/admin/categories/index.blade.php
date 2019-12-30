@@ -15,8 +15,12 @@
                 @foreach ($categories as $category)
                 <tr>
                     <td scope="row"> {{ $category->name }} </td>
-                    <td><a name="" id="" class="btn btn-primary" href="#" role="button">Edit</a></td>
-                    <td><a name="" id="" class="btn btn-danger" href="#" role="button">Delete</a></td>
+                    <td>
+                        <a href="{{ route('category.edit', ['id' => $category->id]) }}" class="btn btn-xs btn-info" href="#" role="button">Edit</a>
+                    </td>
+                    <td>
+                        <a href="{{ route('category.delete', ['id' => $category->id]) }}" class="btn btn-xs btn-danger" href="#" role="button">Delete</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
