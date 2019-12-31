@@ -146,7 +146,7 @@ class PostsController extends Controller
      */
     public function kill($id)
     {
-        $post = Post::withTrashed()->where('id', $id)->get();
+        $post = Post::withTrashed()->where('id', $id)->first();
 
         //dd($post);
         

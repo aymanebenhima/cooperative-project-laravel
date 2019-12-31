@@ -17,9 +17,9 @@
                 @foreach ($posts as $post)
                 <tr>
                     <td scope="row">
-                        <img src="{{ $post->featured }}" alt="{{ $post->title}}" width="50px" height="50px">
+                        <img src="{{ $post->featured }}" alt="{{ $post->title }}" width="50px" height="50px">
                     </td>
-                    <td> {{ $post->title}} </td>
+                    <td> {{ $post->title }} </td>
                     <td>Edit</td>
                     <td>
                         <a name="" id="" class="btn btn-xs btn-success" href="{{ route('post.delete', ['id' => $post->id]) }}" role="button">Restore</a>
