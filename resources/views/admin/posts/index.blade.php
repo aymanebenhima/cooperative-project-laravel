@@ -15,10 +15,14 @@
             <tbody>
                 @foreach ($posts as $post)
                 <tr>
-                    <td scope="row">Image</td>
+                    <td scope="row">
+                        <img src="{{ $post->featured }}" alt="{{ $post->title}}" width="50px" height="50px">
+                    </td>
                     <td> {{ $post->title}} </td>
                     <td>Edit</td>
-                    <td>Delete</td>
+                    <td>
+                        <a name="" id="" class="btn btn-danger" href="{{ route('post.delete', ['id' => $post->id]) }}" role="button">Trash</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

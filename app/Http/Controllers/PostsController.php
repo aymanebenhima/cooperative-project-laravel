@@ -66,7 +66,7 @@ class PostsController extends Controller
         $post = Post::create([
             'title'         => $request->title,
             'content'       => $request->content,
-            'featured'      => 'uploads/posts'.$featured_new_name,
+            'featured'      => 'uploads/posts/' . $featured_new_name,
             'category_id'   => $request->category_id,
             'slug'          => str_slug($request->title) /// Create new laravel project ===> create-new-laravel-project
         ]);
@@ -118,6 +118,12 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+
+        $post->delete();
+
+        Session::flash('success', 'The post was just trashed !');
+
+        return redirect()->back();
     }
 }
