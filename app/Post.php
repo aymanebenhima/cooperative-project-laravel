@@ -13,15 +13,21 @@ class Post extends Model
         'title', 'content', 'category_id', 'featured', 'slug'
     ];
 
-    public function getFeaturedAttribute($featured) {
-
+    public function getFeaturedAttribute($featured)
+    {
         return asset($featured);
     }
 
     protected $dates = ['deleted_at'];
 
-    public function category() {
-
+    public function category()
+    {
         return $this->belongsTo('App\Category');
+    }
+    
+//tags, posts === tag, post === post_tag
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag');
     }
 }
