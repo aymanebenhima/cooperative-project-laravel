@@ -148,13 +148,13 @@ class PostsController extends Controller
     {
         $post = Post::withTrashed()->where('id', $id)->get();
 
-        dd($post);
+        //dd($post);
         
-/*         $post->forceDelete();
+        $post->forceDelete();
 
         Session::flash('success', 'Post deleted permanently.');
 
-        return redirect()->back(); */
+        return redirect()->back();
     }
 
 }
