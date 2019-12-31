@@ -45,6 +45,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         'uses' => 'PostsController@index',
         'as'   => 'posts'
     ]);
+
+    Route::get('/posts/trashed', [
+        'uses' => 'PostsController@trashed',
+        'as'   => 'posts.trashed'
+    ]);
     
     Route::get('/category/create', [
         'uses' => 'CategoriesController@create',

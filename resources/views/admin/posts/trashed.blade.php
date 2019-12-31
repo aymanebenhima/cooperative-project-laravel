@@ -9,7 +9,8 @@
                     <th>Image</th>
                     <th>Title</th>
                     <th>Edit</th>
-                    <th>Trash</th>
+                    <th>Restore</th>
+                    <th>Destroy</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,7 +22,10 @@
                     <td> {{ $post->title}} </td>
                     <td>Edit</td>
                     <td>
-                        <a name="" id="" class="btn btn-xs btn-danger" href="{{ route('post.delete', ['id' => $post->id]) }}" role="button">Trash</a>
+                        <a name="" id="" class="btn btn-xs btn-success" href="{{ route('post.delete', ['id' => $post->id]) }}" role="button">Restore</a>
+                    </td>
+                    <td>
+                        <a name="" id="" class="btn btn-xs btn-danger" href="{{ route('post.delete', ['id' => $post->id]) }}" role="button">Delete</a>
                     </td>
                 </tr>
                 @endforeach

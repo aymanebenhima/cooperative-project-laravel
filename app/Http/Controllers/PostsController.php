@@ -126,4 +126,17 @@ class PostsController extends Controller
 
         return redirect()->back();
     }
+
+    /**
+     * This is a trashed method to restore posts
+     * 
+     * 
+     */
+    public function trashed()
+    {
+        $posts = Post::onlyTrashed()->get();
+        
+        return view('admin.posts.trashed')->with('posts', $posts);
+    }
+
 }
