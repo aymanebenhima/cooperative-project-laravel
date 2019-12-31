@@ -156,5 +156,22 @@ class PostsController extends Controller
 
         return redirect()->back();
     }
+        /**
+     * This is a kill method to delete posts forever
+     * 
+     * 
+     */
+    public function restore($id)
+    {
+        $post = Post::withTrashed()->where('id', $id)->first();
+
+        //dd($post);
+        
+        $post->restore();
+
+        Session::flash('success', 'Post restored successfully.');
+
+        return redirect()->back();
+    }
 
 }
