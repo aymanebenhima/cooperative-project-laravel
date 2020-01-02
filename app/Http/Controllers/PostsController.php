@@ -51,13 +51,15 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        
 
         $this->validate($request, [
 
             'title'         => 'required',
             'featured'      => 'required|image',
             'content'       => 'required',
-            'category_id'   => 'required'
+            'category_id'   => 'required',
+            'tags'          => 'required'
         ]);
 
         $featured = $request->featured;
@@ -73,6 +75,8 @@ class PostsController extends Controller
             'category_id'   => $request->category_id,
             'slug'          => str_slug($request->title) /// Create new laravel project ===> create-new-laravel-project
         ]);
+
+        $post->tags()->attach($request->tags);
 
         Session::flash('success', 'Post created successfully.');
 
@@ -102,7 +106,9 @@ class PostsController extends Controller
 
         //dd($post);
         
-        return view('admin.posts.edit')->with('post', $post)->with('categories', Category::all());
+        return view('admin.posts.edit')->with('post', $post)
+                                       ->with('categories', Category::all())
+                                       ->with('tags', Tag::all());
     }
 
     /**
@@ -137,6 +143,8 @@ class PostsController extends Controller
         $post->category_id = $request->category_id;
 
         $post->save();
+
+        $post->tags()->sync($request->tags);
 
         Session::flash('success', 'Post updated successfully.');
 

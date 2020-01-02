@@ -12,7 +12,7 @@
 
                     <div class="form-group">
                       <label for="name">Tag</label>
-                      <input type="text" name="tag" value="{{ $tag->tag }}" class="form-control" placeholder="">
+                      <input type="text" name="tag" value="{{ $tag->tag }}" class="form-control">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-success">Update Tag</button>

@@ -11,13 +11,15 @@
 |
 */
 
+Route::get('/test', function(){
+    return App\Tag::find(3)->tags;
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
-
-
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
