@@ -6,6 +6,8 @@ use Session;
 
 use App\Post;
 
+use App\Tag;
+
 use App\Category;
 
 use Illuminate\Http\Request;
@@ -37,7 +39,8 @@ class PostsController extends Controller
 
             return redirect()->back();
         }
-        return view('admin.posts.create')->with('categories', $categories);
+        return view('admin.posts.create')->with('categories', $categories)
+                                         ->with('tags', Tag::all());
     }
 
     /**
