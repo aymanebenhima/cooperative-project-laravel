@@ -12,7 +12,7 @@
 */
 
 Route::get('/test', function(){
-    return App\Tag::find(3)->tags;
+    return App\Profile::find(1)->user;
 });
 
 Route::get('/', function () {
