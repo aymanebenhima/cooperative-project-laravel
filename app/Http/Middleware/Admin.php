@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Auth;
+use Session;
 use Closure;
 
 class Admin

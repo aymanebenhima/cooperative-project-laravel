@@ -81,32 +81,47 @@
                         <li class="list-group-item">
                             <a href="{{ route('home') }}">Home</a>
                         </li>
+
                         <li class="list-group-item">
                             <a href="{{ route('category.create') }}">Create new category</a>
                         </li>
+
                         <li class="list-group-item">
                             <a href="{{ route('tag.create') }}">Create new tag</a>
                         </li>
+
                         <li class="list-group-item">
                             <a href="{{ route('post.create') }}">Create new post</a>
                         </li>
+
+                        @if (Auth::user()->admin)
+                            <li class="list-group-item">
+                                <a href="{{ route('user.create') }}">Create new user</a>
+                            </li>
+
+                            <li class="list-group-item">
+                                <a href="{{ route('users') }}">Show all users</a>
+                            </li>
+                        @endif
+
                         <li class="list-group-item">
-                            <a href="{{ route('user.create') }}">Create new user</a>
+                            <a href="{{ route('user.profile') }}">My profile</a>
                         </li>
+
                         <li class="list-group-item">
                             <a href="{{ route('categories') }}">Show categories</a>
                         </li>
+
                         <li class="list-group-item">
                             <a href="{{ route('tags') }}">Tags</a>
                         </li>
+
                         <li class="list-group-item">
                             <a href="{{ route('posts') }}">Show posts</a>
                         </li>
+
                         <li class="list-group-item">
                             <a href="{{ route('posts.trashed') }}">Show trashed posts</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="{{ route('users') }}">Show all users</a>
                         </li>
 
                     </ul>

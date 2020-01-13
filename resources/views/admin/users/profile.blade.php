@@ -12,13 +12,13 @@
 
                     <div class="form-group">
                       <label for="username">Username</label>
-                      <input type="text" name="name" id="username" class="form-control" placeholder="your name" aria-describedby="username">
+                    <input type="text" name="name" value="{{ $user->name }}" id="username" class="form-control" placeholder="your name" aria-describedby="username">
                       <small id="username" class="text-muted">put name of your new username</small>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input id="email" type="email" class="form-control" name="email" aria-describedby="emailHelpId" placeholder="exemple@gmail.com">
+                    <input id="email" type="email" class="form-control" name="email" aria-describedby="email" value="{{ $user->email }}">
                         <small id="email" class="form-text text-muted">Email</small>
                     </div>
 
@@ -30,7 +30,7 @@
 
                     <div class="form-group">
                       <label for="about">About you</label>
-                      <textarea class="form-control" name="about" id="about" rows="6"></textarea>
+                      <textarea class="form-control" name="about" id="about" rows="6">{{$user->profile->about}}</textarea>
                     </div>
 
                     <div class="form-group">
@@ -40,13 +40,13 @@
 
                     <div class="form-group">
                         <label for="facebook">Facebook</label>
-                        <input type="text" class="form-control" name="facebook" id="facebook" aria-describedby="facebook" value="https://facebook.com/">
+                    <input type="text" class="form-control" name="facebook" id="facebook" aria-describedby="facebook" value="{{ $user->profile->facebook }}">
                         <small id="facebook" class="form-text text-muted">your facebook account</small>
                     </div>
 
                     <div class="form-group">
                         <label for="facebook">WhatsApp number</label>
-                        <input type="number" class="form-control" name="whatsapp" id="whatsapp" aria-describedby="whatsapp" placeholder="">
+                        <input type="number" class="form-control" name="whatsapp" id="whatsapp" aria-describedby="whatsapp" value="{{ $user->profile->whatsapp }}">
                         <small id="facebook" class="form-text text-muted">your WhatsApp number</small>
                     </div>
 
