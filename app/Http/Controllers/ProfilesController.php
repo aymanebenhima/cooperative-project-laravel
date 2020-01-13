@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Session;
 
 use Illuminate\Http\Request;
 
@@ -68,9 +69,47 @@ class ProfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name'      => 'required',
+            'email'     => 'required|email',
+            'facebook'  => 'required|url',
+            'whatsapp'  => 'required'
+        ]);
+
+        $user = Auth::user();
+
+        if ($request->hasFile('avatar'))
+        {
+            $avatar = $request->avatar;
+
+            $avatar_new_name = time() . $avatar->getClientOriginalName();
+
+            $avatar->move('uploads/avatars', $avatar_new_name);
+
+            $user->profile->avatar = 'uploads/avatars/' . $avatar_new_name;
+
+            $user->profile->save();
+        }
+
+        $user->name                 = $request->name;
+        $user->email                = $request->email;
+        $user->profile->facebook    = $request->facebook;
+        $user->profile->whatsapp    = $request->whatsapp;
+
+        $user->save();
+        $user->profile->save();
+
+        if ($request->has('password'))
+        {
+            $user->password = bcrypt($request->password);
+            $user->save();
+        }
+
+        Session::flash('info', 'Account profile updated !');
+
+        return redirect()->back();
     }
 
     /**
